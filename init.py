@@ -1,15 +1,16 @@
 import pymysql as mysql
 import os
+import streamlit as stl
 
 class Connection:
     def __init__(self):
         self.connection = mysql.connect(
-            charset=os.getenv("CHARSET"),
-            database=os.getenv("DATABASE"),
-            host=os.getenv("HOST"),
-            password=os.getenv("PASSWORD"),
-            port=os.getenv("PORT"),
-            user=os.getenv("USER")
+            charset=stl.secrets["CHARSET"],
+            database=stl.secrets["DATABASE"],
+            host=stl.secrets["HOST"],
+            password=stl.secrets["PASSWORD"],
+            port=stl.secrets["PORT"],
+            user=stl.secrets["USER"]
         )
 
     def get_cursor(self):
